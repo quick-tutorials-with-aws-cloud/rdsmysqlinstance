@@ -41,8 +41,8 @@ Parameters:
     Type: Number
     Default: 50
 
-  KmsKeyId:
-    Type: String
+  # KmsKeyId:
+  #   Type: String
 
   BackupRetentionPeriod:
     Type: Number
@@ -71,8 +71,9 @@ Resources:
       GroupDescription: !Sub ${DBName}SecurityGroup
       SecurityGroupIngress:
         - IpProtocol: tcp
-          FromPort: 5432
-          ToPort: 5432
+          FromPort: 3306
+          ToPort: 3306
+          CidrIp: 0.0.0.0/0
 
   EnhancedMonitoringRole:
     Type: AWS::IAM::Role
